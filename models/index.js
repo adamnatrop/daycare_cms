@@ -25,4 +25,4 @@ Child.belongsTo(Billing, {
     foreignKey: 'billing_id'
 });
 
-
+module.exports = { User, Parent, Child, ParentChild, Billing }
