@@ -1,6 +1,18 @@
 
 const { createInvoice } = require("./createInvoice.js");
 
+function invoiceData (){
+  fetch('/api/invoice',{
+    method:'GET',
+    body:'',
+  }).then(function(response){
+    return response.json();
+  })
+}
+  
+//give information
+
+
 const invoice = {
   shipping: {
     name: "John Doe",
@@ -23,6 +35,7 @@ const invoice = {
       amount: 3200
     }
   ],
+
   subtotal: 8000,
   paid: 0,
   invoice_nr: 1234
