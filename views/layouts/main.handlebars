@@ -16,41 +16,65 @@
 </head>
 
 
-<body>
-  
+<body style='padding:1rem'>
 
-     <div class="form-group toast show" id='container-3'>
-        <div class="card">
-            <h1 class='card-header'>Dash Board</h1>
-            <p>--calender/notes--</p>
-            <div id='ul-container-3'>
-            <ul class='list-group' >
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    remainders
-                    <span class="badge badge-primary badge-pill">14</span>
+ <!--dash board container-->
+<div class="form-group toast show" id='container-3'>
+     <div class="card">
+            <h1 class='card-header'>Dash Board</h1> <!--dash board-->
+            <ul class="nav nav-tabs">   <!--Nav-table-->
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
                 </li>
-                
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    birthdays
-                    <span class="badge badge-primary badge-pill">14</span>
-                </li>  
-
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    weekly theme
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
                 </li>
-                
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    daily lesson plan
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#setting">Setting</a>
                 </li>
-
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    meal plans
-                </li>
-
-                <li id='calender' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    calender
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#other">other</a>
                 </li>
             </ul>
+            <div id="myTabContent" class="tab-content"> <!--table content-->
+                <div class="tab-pane fade active show" id="home">   <!--home content-->
+                    <div id='ul-container-3'>
+                        <ul class='list-group' >
+                            <li id='remainders' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Remainders
+                                <span class="badge badge-primary badge-pill">14</span>
+                            </li>
+                            
+                            <li id='birthdays' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Birthdays
+                                <span class="badge badge-primary badge-pill">14</span>
+                            </li>  
+            
+                            <li id='theme' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Weekly Theme
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+                            
+                            <li id='lesson' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Daily Lesson Plan
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+            
+                            <li id='meal' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Meal Plans
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+            
+                            <li id='calender' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Calender
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+                        </ul>
+                    </div>                
+                </div>
+                <div class="tab-pane fade show" id="profile">  <!--profile content-->
+                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                </div>
             </div>
         </div>
     </div>

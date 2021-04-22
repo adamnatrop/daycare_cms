@@ -30,4 +30,11 @@
     /* border: solid 1px black; */
     padding: 1rem;
 }
-#calender::before { content: './pic/cupcake.png'}
+
+
+#remainders::before {content: url(./pic/alarm-clock.png)}
+#birthdays::before { content: url(./pic/birthday-cake48.png)}
+#theme::before { content: url(./pic/fun-fair.png)}
+#lesson::before { content: url(./pic/book48.png)}
+#meal::before { content: url(./pic/cupcake50.png)}
+#calender::before { content : url(./pic/calendar.png)}
