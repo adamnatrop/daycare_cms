@@ -11,18 +11,14 @@ Billing.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        infant: {
-            type: DataTypes.INTEGER,
+        type: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        toddler: {
+        cost: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        preschooler: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        }
+        }, 
     },
     {
         sequelize,

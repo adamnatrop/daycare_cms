@@ -1,0 +1,17 @@
+[
+  {
+    "firstName": "Sam",
+    "lastName": "jones",
+    "allergies": "none",
+    "birthdate": 10201980,
+    "billing_id": 1
+  },
+  {
+    "firstName": "Amy",
+    "lastName": "knapp",
+    "allergies": "soy",
+    "birthdate": 11021990,
+    "billing_id": 2
+  }
+ 
+]
