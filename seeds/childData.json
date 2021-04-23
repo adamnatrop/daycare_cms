@@ -4,6 +4,7 @@
     "lastName": "jones",
     "allergies": "none",
     "birthdate": 10201980,
+    "parent_id": 1,
     "billing_id": 1
   },
   {
@@ -11,6 +12,7 @@
     "lastName": "knapp",
     "allergies": "soy",
     "birthdate": 11021990,
+    "parent_id": 1,
     "billing_id": 2
   }
  
