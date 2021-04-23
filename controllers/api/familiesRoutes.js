@@ -3,46 +3,55 @@ const withAuth = require('../../utils/auth');
 const { Parent, Child, ParentChild, Billing, User} = require('../../models');
 
 // Get All Families Parents and Children
-router.get('/', withAuth, async (req, res) => {
+router.get('/',  async (req, res) => {
+    
     try {
         const familyData = await Child.findAll({
             include: [
                 {
                     model: Parent,
                     attributes: ['firstName', 'lastName'],
+                    as: 'parents'
                 }, 
+                
             ],
         });
+        //REMOVE AFTER HANDLEBAR PAGE IS CREATED
+        console.log(familyData);
+        res.status(200).json(familyData)
 
-        const family = familyData.map((fam) => fam.get({plain: true}));
+        // const family = familyData.map((fam) => fam.get({plain: true}));
 
-        res.render('families', {
-            family,
-            logged_in: req.session.logged_in
-        });
+        // res.render('families', {
+        //     family,
+        //     logged_in: req.session.logged_in
+        // });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
 // Get Family by ID
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id',  async (req, res) => {
     try {
         const familyData = await Child.findByPk( req.params.id, {
             include: [
                 {
                     model: Parent,
                     attributes: ['firstName', 'lastName'],
+                    as: 'parents'
                 }, 
             ],
         });
+        //REMOVE AFTER HANDLEBAR PAGE IS CREATED
+        console.log(familyData);
+        res.status(200).json(familyData)
+        // const family = familyData.get({plain: true});
 
-        const family = familyData.get({plain: true});
-
-        res.render('families', {
-            ...family,
-            logged_in: req.session.logged_in
-        });
+        // res.render('families', {
+        //     ...family,
+        //     logged_in: req.session.logged_in
+        // });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -50,12 +59,11 @@ router.get('/:id', withAuth, async (req, res) => {
 
 
 // Add Child
-router.post('/', withAuth, async (req, res) => {
+router.post('/child',  async (req, res) => {
+    console.log(req.body);
     try {
-        const newChild = await Child.create({
-            // match to form input fields
-            ...req.body,
-        });
+        const newChild = await Child.create(req.body);
+
         res.status(200).json(newChild);
     } catch (err) {
         res.status(400).json(err);
@@ -63,7 +71,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // Update Child
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/child/:id', async (req, res) => {
     try {
         const childData = await Child.update( req.body, {
             where: {
@@ -77,7 +85,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Delete Child
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/child/:id', async (req, res) => {
     try {
         const childData = await Child.destroy({
             where: {
@@ -97,8 +105,8 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 
-// Add Parent
-router.post('/', withAuth, async (req, res) => {
+//Add Parent
+router.post('/parent', async (req, res) => {
     try {
         const newParent = await Parent.create({
             // match to form input fields
@@ -112,7 +120,7 @@ router.post('/', withAuth, async (req, res) => {
 
 
 // Update Parent
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/parent/:id', async (req, res) => {
     try {
         const parentData = await Parent.update( req.body, {
             where: {
@@ -126,7 +134,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Delete Parent
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/parent/:id', async (req, res) => {
     try {
         const parentData = await Parent.destroy({
             where: {
