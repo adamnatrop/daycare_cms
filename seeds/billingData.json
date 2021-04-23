@@ -1,0 +1,15 @@
+[
+  {
+    "type": "infant",
+    "cost": 200
+  },
+  {
+    "type": "toddler",
+    "cost": 170
+  },
+  {
+    "type": "preschooler",
+    "cost": 150
+  }
+
+]
