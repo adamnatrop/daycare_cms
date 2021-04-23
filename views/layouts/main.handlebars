@@ -35,3 +35,83 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.0/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,200&display=swap"
+    rel="stylesheet">
+
+<!-- link for the bootswatch -->
+<!-- https://bootswatch.com/lumen/  -->
+
+</head>
+
+
+<body style='padding:1rem'>
+
+ <!--dash board container-->
+<div class="form-group toast show" id='container-3'>
+     <div class="card">
+            <h1 class='card-header'>Dash Board</h1> <!--dash board-->
+            <ul class="nav nav-tabs">   <!--Nav-table-->
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#setting">Setting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#other">other</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content"> <!--table content-->
+                <div class="tab-pane fade active show" id="home">   <!--home content-->
+                    <div id='ul-container-3'>
+                        <ul class='list-group' >
+                            <li id='remainders' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Remainders
+                                <span class="badge badge-primary badge-pill">14</span>
+                            </li>
+                            
+                            <li id='birthdays' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Birthdays
+                                <span class="badge badge-primary badge-pill">14</span>
+                            </li>  
+            
+                            <li id='theme' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Weekly Theme
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+                            
+                            <li id='lesson' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Daily Lesson Plan
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+            
+                            <li id='meal' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Meal Plans
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+            
+                            <li id='calender' class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                Calender
+                                <span style="visibility:hidden;" class="badge badge-primary badge-pill">14</span>
+                            </li>
+                        </ul>
+                    </div>                
+                </div>
+                <div class="tab-pane fade show" id="profile">  <!--profile content-->
+                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
