@@ -1,15 +1,65 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Room1 babysitting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./webdaycare.html">Home
+                        <span class="sr-only">(current)</span>   <!-- <<<== show the current page in the app-->
+                    </a>
+                </li>
+                <li class="nav-item active"><a class="nav-link" href="./families.html">Families</a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">Billing </a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">other tool </a></li>
+            </ul>
+        </div>
+
+        <div>
+            <button><a href="./login-page.html" target="_top">Start Now</a></button>
+            <button><a href="./webdaycare.html" target="_top">Log out</a></button>
+        </div>
+    </nav>
+
+    <header id="overview" style="padding: 0.3rem 1rem 0rem 0rem;">
+        <div class="span4 logo-container">
+        <a href="./webdaycare.html"><img class="logo-img" alt="tam-logo" src="./pic/logo1.png"></a>
+        </div>
+        
+    </header>
+
+    <h2 class="align-center">Log In</h2>
+
 
     <div id='container-1' class="form-group toast show" style='padding:1rem'>
         <!-- <label class="col-form-label" for="inputDefault">Email</label>  -->
-        <input id="email-login" type="text" class="form-control" placeholder="Email or Phone Number" >
+        <input  type="text" class="form-control" placeholder="Email or Phone Number" id="email">
 
         <!-- <label class="col-form-label" for="inputDefault">Password</label> -->
-        <input id="password-login" type="text" class="form-control" placeholder="Password" >    
+        <input  type="text" class="form-control" placeholder="Password" id="password">    
 
-        <button type="button" class="login-form btn btn-primary btn-lg btn-block">Login</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
         <div id='forgotpass'><a href='#'>Forgot password?</a></div>
         <div id='btn-1'>  
-            <button type="button" class="btn btn-success" >Create New Account</button>
+            <a href='./registration.html'> <button type="button" class="btn btn-success" >Create New Account</button> </a>
         </div>
     </div>
 
+    <div class="pond margin-top-30 margin-bottom-0">
+        <div class="hfont font-size-24" style="margin: 15px 0;"><i class="fa fa-question-circle-o"></i> Help</div>
+        <div class="margin-bottom-5">
+        <div class="#">I can’t log into my account.&nbsp; </div>
+        <a href="/users/password/new">Reset your password »</a>
+        </div>
+        <div class="margin-bottom-5">
+        <div class="">How do I log in?&nbsp; </div>
+        <a href="#">Set up your login »</a>
+        </div>
+        </div>
+<br>
+<br>
+    <footer>
+        <p>Copyright © room-1 .</p>
+    </footer>
