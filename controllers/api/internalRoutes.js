@@ -9,12 +9,17 @@ router.get('/', withAuth,  async (req, res) => {
     
     try {
         const familyData = await Child.findAll({
+        
             include: [
                 {
                     model: Parent,
                     attributes: ['firstName', 'lastName'],
                     as: 'parents'
                 }, 
+                {
+                    model: Billing,
+                    attributes: ['type', 'cost']
+                }
                 
             ],
         });
@@ -52,10 +57,16 @@ router.get('/:id', withAuth, async (req, res) => {
         const familyData = await Child.findByPk( req.params.id, {
             include: [
                 {
-                    model: Parent,
-                    attributes: ['firstName', 'lastName'],
-                    as: 'parents'
+                    model: Child,
+                    attributes: ['firstName', 'lastName', 'birthdate'],
+                    include: [
+                        {
+                            model: Billing,
+                            attributes: ['type', 'cost']
+                        }
+                    ]
                 }, 
+                
             ],
         });
         //REMOVE AFTER HANDLEBAR PAGE IS CREATED
