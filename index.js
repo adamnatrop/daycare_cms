@@ -1,44 +1,52 @@
-
 const { createInvoice } = require("./createInvoice.js");
 
-function invoiceData (){
-  fetch('/api/invoice',{
-    method:'GET',
-    body:'',
-  }).then(function(response){
-    return response.json();
-  })
+async function getFamily(){
+  let url = '/api/internal/1';
+  try{
+    let res = await fetch(url);
+    console.log(res)
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
-  
-//give information
 
+async function mapInvoice (){
+  let data = await getFamily();
+  const childArray =[]
 
-const invoice = {
-  shipping: {
-    name: "John Doe",
-    address: "1234 Main Street",
-    city: "San Francisco",
-    state: "CA",
-    postal_code: 94111
-  },
-  child: [
-    {
-      child: "Charlie",
-      age_group: "Infant",
-      quantity: 5,
-      amount: 4000
-    },
-    {
-      child: "Bily",
-      age_group: "Toddler",
-      quantity: 4,
-      amount: 3200
+  data.child.forEach(function(item,index){
+    let childData = {
+      child: item.firstName + " " + item.firstName,
+      age_group: item.billing.type,
+      birth_day: item.birthDate,
+      amount: item.billing.cost
     }
-  ],
+    childArray.push(childData)
+  });
 
-  subtotal: 8000,
-  paid: 0,
-  invoice_nr: 1234
-};
+    let subtotal = 0
 
-createInvoice(invoice, "invoice.pdf");
+  for (let i = 0; i >= childArray.length ; i++){
+    subtotal = subtotal + childArray.amount
+  }
+
+  const invoice = {
+    parent: {
+      name: data.firstName + " " + data.lastName,
+      address: data.address,
+      city: data.city,
+      state: data.state,
+      postal_code: data.postalCode
+    },
+    child: childArray,
+  
+    subtotal: subtotal,
+    invoice_nr: invoice_nr++,
+    paid: 0,
+  };
+
+  createInvoice(invoice, "invoice.pdf");
+}
+
+mapInvoice();
