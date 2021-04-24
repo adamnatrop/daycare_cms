@@ -30,7 +30,6 @@
     "express-session": "^1.17.1",
     "fs": "0.0.1-security",
     "mysql2": "^2.2.5",
-    "node-fetch": "^2.6.1",
     "pdfkit": "^0.12.1",
     "sequelize": "^6.6.2"
   },

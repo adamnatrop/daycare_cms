@@ -111,7 +111,6 @@ function generateInvoiceTable(doc, invoice) {
     "",
     "",
     "Subtotal",
-    "",
     formatCurrency(invoice.subtotal)
   );
 
@@ -122,7 +121,6 @@ function generateInvoiceTable(doc, invoice) {
     "",
     "",
     "Paid To Date",
-    "",
     formatCurrency(invoice.paid)
   );
 
@@ -134,7 +132,6 @@ function generateInvoiceTable(doc, invoice) {
     "",
     "",
     "Balance Due",
-    "",
     formatCurrency(invoice.subtotal - invoice.paid)
   );
   doc.font("Helvetica");
@@ -156,7 +153,6 @@ function generateTableRow(
   y,
   child,
   age_group,
-  unitCost,
   birth_day,
   lineTotal
 ) {
@@ -164,8 +160,7 @@ function generateTableRow(
     .fontSize(10)
     .text(child, 50, y)
     .text(age_group, 150, y)
-    .text(unitCost, 280, y, { width: 90, align: "right" })
-    .text(birth_day, 370, y, { width: 90, align: "right" })
+    .text(birth_day, 370, y, { width: 90})
     .text(lineTotal, 0, y, { align: "right" });
 }
 
