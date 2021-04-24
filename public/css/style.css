@@ -1,40 +1,48 @@
 #container-1 * {
-    margin-bottom:0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.body {
+  background-image: url(./pic/backgroundimage.png);
+  height: auto;
+  max-height: inherit;
+}
+
+h1 {
+  font-family: cursive;
+  text-align: center;
+}
+
+h2 {
+  font-family: cursive;
+  text-align: center;
 }
 
 #forgotpass {
-    text-align: center;
-    margin-bottom:0.5rem
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-#btn-1 {   
-    margin-top:0.5rem;
-    padding-top: 0.8rem;
-    text-align:center;
-    border-top: 0.8px rgb(8, 5, 5) solid;
+#btn-1 {
+  margin-top: 0.5rem;
+  padding-top: 0.8rem;
+  text-align: center;
+  border-top: 0.8px rgb(8, 5, 5) solid;
 }
 
 #btn-2 {
-    text-align:center;
+  text-align: center;
 }
 #container-2 * {
-    margin-bottom:0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 #close-container-2 {
-    float: right;
+  float: right;
 }
 
 #ul-container-3 {
-    text-align: center;
-    /* border: solid 1px black; */
-    padding: 1rem;
+  text-align: center;
+  /* border: solid 1px black; */
+  padding: 1rem;
 }
-
-
-#remainders::before {content: url(./pic/alarm-clock.png)}
-#birthdays::before { content: url(./pic/birthday-cake48.png)}
-#theme::before { content: url(./pic/fun-fair.png)}
-#lesson::before { content: url(./pic/book48.png)}
-#meal::before { content: url(./pic/cupcake50.png)}
-#calender::before { content : url(./pic/calendar.png)}
