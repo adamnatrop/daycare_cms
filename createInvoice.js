@@ -31,14 +31,14 @@ function generateCustomerInformation(doc, invoice) {
   doc
   .fontSize(10)
   .font("Helvetica-Bold")
-  .text(invoice.shipping.name, 50, 100)
+  .text(invoice.parent.name, 50, 100)
   .font("Helvetica")
-  .text(invoice.shipping.address, 50, 115)
+  .text(invoice.parent.address, 50, 115)
   .text(
-    invoice.shipping.city +
+    invoice.parent.city +
       ", " +
-      invoice.shipping.state + " " +
-      invoice.shipping.postal_code,
+      invoice.parent.state + " " +
+      invoice.parent.postal_code,
     50,
     130
   )
@@ -83,8 +83,7 @@ function generateInvoiceTable(doc, invoice) {
     invoiceTableTop,
     "Child Name",
     "Age Group",
-    "Daily rate",
-    "Number of Days",
+    "Birthday",
     "Week's Total"
   );
   generateHr(doc, invoiceTableTop + 20);
@@ -98,9 +97,8 @@ function generateInvoiceTable(doc, invoice) {
       position,
       child.child,
       child.age_group,
-      formatCurrency(child.amount),
-      child.quantity,
-      formatCurrency(child.amount * child.quantity)
+      child.birth_day,
+      formatCurrency(child.amount)
     );
 
     generateHr(doc, position + 20);
@@ -159,7 +157,7 @@ function generateTableRow(
   child,
   age_group,
   unitCost,
-  quantity,
+  birth_day,
   lineTotal
 ) {
   doc
@@ -167,7 +165,7 @@ function generateTableRow(
     .text(child, 50, y)
     .text(age_group, 150, y)
     .text(unitCost, 280, y, { width: 90, align: "right" })
-    .text(quantity, 370, y, { width: 90, align: "right" })
+    .text(birth_day, 370, y, { width: 90, align: "right" })
     .text(lineTotal, 0, y, { align: "right" });
 }
 
