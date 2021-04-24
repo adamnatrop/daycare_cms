@@ -27,6 +27,13 @@ Child.init(
             type: DataTypes.DATE,
             allowNull: false,
         },
+        parent_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'parent',
+                key: 'id',
+            }
+        },
         billing_id: {
             type: DataTypes.INTEGER,
             references: {

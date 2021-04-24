@@ -3,14 +3,20 @@
     "firstName": "Sal",
     "lastName": "Jones",
     "phone": "02345689",
-    "address": "123 cir minneapolis, MN 55420",
+    "address": "123 cir rd",
+    "city": "Minneapolis",
+    "state": "MN",
+    "postalCode": 55420,
     "email":"sal@hotmail.com"
   },
   {
     "firstName": "Justin",
     "lastName": "Knapp",
     "phone": "02345689",
-    "address": "123 cir rockford, MN 55420",
+    "address": "1335 cir pine ",
+    "city": "Rockford",
+    "state": "MN",
+    "postalCode": 55373,
     "email":"just@hotmail.com"
   }
   

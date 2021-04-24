@@ -25,4 +25,9 @@ Child.belongsTo(Billing, {
     foreignKey: 'billing_id'
 });
 
+Parent.hasMany(Child, {
+    foreignKey: 'parent_id',
+    onDelete: 'CASCADE',
+})
+
 module.exports = { User, Parent, Child, ParentChild, Billing }
