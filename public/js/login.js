@@ -1,9 +1,22 @@
 
+async function getData(){
+  console.log('FIRED');
+  let url = '/api/internal';
+  try {
+    let res = await fetch(url);
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
 const loginForm = async (event) => {
     event.preventDefault();
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-
+    getData()
     if (email && password) {
         const response = await fetch('/api/users/login', {
             method: 'POST',
