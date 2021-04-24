@@ -2,18 +2,40 @@
     <div class="card">
         <h1 class='card-header'>Families</h1>
         <div id='ul-container-3'>
-            <ul class='list-group'>
-                {{#each family as |child| }}
-                <li class="list-group-item justify-content-between align-items-center list-group-item-action">
-                    <div class="col">
-                        <h2>
-                            Child:{{child.firstName}} {{child.lastName}} Birthday:{{format_date child.birthdate}}
-                        </h2>
-                    </div>
-                </li>
-                {{/each}}
-            </ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Birthdate</th>
+                        <th scope="col">Age Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each family as |child| }}
+                    <tr class='clickable-row' data-href="/api/internal/familyProfile/{{child.parent_id}}"
+                        data={{child.parent_id}}>
+                        <td>{{child.firstName}}</td>
+                        <td>{{child.lastName}}</td>
+                        <td>{{format_date child.birthdate}}</td>
+                        <td>{{child.billing.type}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>
 
 </div>
