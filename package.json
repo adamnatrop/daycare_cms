@@ -30,7 +30,6 @@
     "fs": "0.0.1-security",
     "mysql2": "^2.2.5",
     "pdfkit": "^0.12.1",
-    "requirejs": "^2.3.6",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {

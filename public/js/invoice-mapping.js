@@ -1,16 +1,30 @@
-const createInvoice = require("./createInvoice.js");
+//const createInvoice = require("./createInvoice.js");
 
 
-async function getData(event) {
-  fetch('/api/internal/1')
-  .then((response) => {
-  return response.json();
-  }).then((res) => {
+// async function getData(event) {
+//   fetch('/api/internal/1')
+//   .then((response) => {
+//   return response.json();
+//   }).then((res) => {
   
-  mapInvoice(res);
-  })
+//   mapInvoice(res);
+//   })
   
-};
+// };
+
+// async function submitInvoice(invoice) {
+//  try {
+//   const response = await fetch('/api/internal/invoice', {
+//     method: 'POST',
+//     body: JSON.stringify(invoice),
+//     headers: {'Content-Type': 'application/json'},
+//   });
+//  } catch (err) {
+//    console.log(err);
+//  }
+ 
+// };
+
 
 
 
@@ -27,7 +41,7 @@ async function mapInvoice (data){
         amount: item.billing.cost
       }
       childArray.push(childData)
-      console.log(childArray)
+      
     });
   
       let subtotal = 0
@@ -50,10 +64,21 @@ async function mapInvoice (data){
       invoice_nr: +1,
       paid: 0,
     };
-  
-    createInvoice(invoice, "invoice.pdf");
+    
+    return invoice;
+    //submitInvoice(invoice);
+    // createInvoice(invoice, "invoice.pdf");
   };
 
-  document
-  .querySelector('.writeInvoice')
-  .addEventListener('click', getData);
+
+
+
+
+
+  // document
+  // .querySelector('.writeInvoice')
+  // .addEventListener('click', getData);
+
+  module.exports = {
+    mapInvoice
+  }

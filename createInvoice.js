@@ -1,6 +1,7 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
 
+
 function createInvoice(invoice, path) {
   let doc = new PDFDocument({ size: "A4", margin: 50 });
 

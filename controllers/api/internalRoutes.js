@@ -1,7 +1,19 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 const { Parent, Child, ParentChild, Billing, User} = require('../../models');
+const pdfInvoice = require('../../testinvoice'); // <---- USING TEST INVOICE NEED TO SWAP WITH STEVENS
+const invoiceMap = require('../../public/js/invoice-mapping');
 
+router.post('/invoice', async (req, res) => {
+    try {
+        const invoice = req.body
+        console.log(invoice)
+        await pdfInvoice.createInvoice(invoice, "./public/pdf/invoice.pdf");
+        console.log("SUCCESS")
+    } catch (err){
+
+    }
+});
 
 
 // Get All Families Parents and Children RENDER DASHBOARD
@@ -23,12 +35,10 @@ router.get('/', withAuth,  async (req, res) => {
                 
             ],
         });
-        //REMOVE AFTER HANDLEBAR PAGE IS CREATED
-       // console.log(familyData);
-        //res.status(200).json(familyData)
+     
 
         const family = familyData.map((fam) => fam.get({plain: true}));
-        console.log(family)
+      
         res.render('dashboard', {
             family,
             logged_in: req.session.logged_in
@@ -50,6 +60,8 @@ router.get('/families', withAuth, async (req, res) => {
     }
 });
 
+
+// GET Parent by ID to render Family Profile AND generate Invoice PDF
 router.get('/familyProfile/:id',  async (req, res) => {
     try {
         const familyData = await Parent.findByPk( req.params.id, {
@@ -67,9 +79,10 @@ router.get('/familyProfile/:id',  async (req, res) => {
                 
             ],
         });
-        //console.log(familyData);
         const family = familyData.get({plain: true});
-        console.log(family);
+       // console.log(family);
+       const invoice = await invoiceMap.mapInvoice(family)
+       await pdfInvoice.createInvoice(invoice, "./public/pdf/invoice.pdf");
         res.render('families', {
            
             logged_in: req.session.logged_in
@@ -102,7 +115,7 @@ router.get('/:id', async (req, res) => {
         //console.log(familyData);
         
         const family = familyData.get({plain: true});
-        console.log(family);
+        //console.log(family);
         res.status(200).json(family)
         // res.render('families', {
         //     ...family,
