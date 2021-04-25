@@ -99,10 +99,11 @@ router.get('/:id', async (req, res) => {
             ],
         });
         //REMOVE AFTER HANDLEBAR PAGE IS CREATED
-        console.log(familyData);
-        res.status(200).json(familyData)
-        // const family = familyData.get({plain: true});
-
+        //console.log(familyData);
+        
+        const family = familyData.get({plain: true});
+        console.log(family);
+        res.status(200).json(family)
         // res.render('families', {
         //     ...family,
         //     logged_in: req.session.logged_in

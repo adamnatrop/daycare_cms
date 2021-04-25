@@ -1,17 +1,4 @@
 
-async function getData(){
-  console.log('FIRED');
-  let url = '/api/internal';
-  try {
-    let res = await fetch(url);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-
 const loginForm = async (event) => {
     event.preventDefault();
     const email = document.querySelector('#email-login').value.trim();
