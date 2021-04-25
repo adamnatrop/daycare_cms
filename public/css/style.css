@@ -4,26 +4,19 @@
 
 .body {
   background-attachment: fixed;
-  background-image: url(./pic/backgroundimage.png);
+  background-image: url(/images/backgroundimagenokids.png);
 }
 
 h1 {
   font-family: cursive;
-  text-align: center;
 }
 
 h2 {
   font-family: cursive;
-  text-align: center;
 }
 
 .familyProfile {
   font-size: 1.5em;
-}
-
-#forgotpass {
-  text-align: center;
-  margin-bottom: 0.5rem;
 }
 
 #btn-1 {

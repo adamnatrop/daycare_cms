@@ -115,7 +115,7 @@ router.get('/familyProfile/:id',  async (req, res) => {
        const invoice = await invoiceMap.mapInvoice(family)
        await pdfInvoice.createInvoice(invoice, "./public/pdf/invoice.pdf");
         res.render('families', {
-           
+            family,
             logged_in: req.session.logged_in
         });
     } catch (err) {
