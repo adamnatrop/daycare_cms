@@ -1,7 +1,6 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
 
-
 function createInvoice(invoice, path) {
   let doc = new PDFDocument({ size: "A4", margin: 50 });
 
@@ -74,7 +73,125 @@ function generateCustomerInformation(doc, invoice) {
   generateHr(doc, 252);
 }
 
+function generateInvoiceTable(doc, invoice) {
+  let i;
+  const invoiceTableTop = 285;
 
+  doc.font("Helvetica-Bold");
+  generateTableRow(
+    doc,
+    invoiceTableTop,
+    "Child Name",
+    "Age Group",
+    "Birthday",
+    "Week's Total"
+  );
+  generateHr(doc, invoiceTableTop + 20);
+  doc.font("Helvetica");
+
+  for (i = 0; i < invoice.child.length; i++) {
+    const child = invoice.child[i];
+    const position = invoiceTableTop + (i + 1) * 30;
+    generateTableRow(
+      doc,
+      position,
+      child.child,
+      child.age_group,
+      child.birth_day,
+      formatCurrency(child.amount)
+    );
+
+    generateHr(doc, position + 20);
+  }
+
+  const subtotalPosition = invoiceTableTop + (i + 1) * 30;
+  generateTableRow(
+    doc,
+    subtotalPosition,
+    "",
+    "",
+    "Subtotal",
+    formatCurrency(invoice.subtotal)
+  );
+
+  const paidToDatePosition = subtotalPosition + 20;
+  generateTableRow(
+    doc,
+    paidToDatePosition,
+    "",
+    "",
+    "Paid To Date",
+    formatCurrency(invoice.paid)
+  );
+
+  const duePosition = paidToDatePosition + 25;
+  doc.font("Helvetica-Bold");
+  generateTableRow(
+    doc,
+    duePosition,
+    "",
+    "",
+    "Balance Due",
+    formatCurrency(invoice.subtotal - invoice.paid)
+  );
+  doc.font("Helvetica");
+}
+
+function generateFooter(doc) {
+  doc
+    .fontSize(10)
+    .text(
+      "Payment is due by Monday every week. Thank you.",
+      50,
+      780,
+      { align: "center", width: 500 }
+    );
+}
+
+function generateTableRow(
+  doc,
+  y,
+  child,
+  age_group,
+  birth_day,
+  lineTotal
+) {
+  doc
+    .fontSize(10)
+    .text(child, 50, y)
+    .text(age_group, 150, y)
+    .text(birth_day, 370, y, { width: 90})
+    .text(lineTotal, 0, y, { align: "right" });
+}
+
+function generateHr(doc, y) {
+  doc
+    .strokeColor("#aaaaaa")
+    .lineWidth(1)
+    .moveTo(50, y)
+    .lineTo(550, y)
+    .stroke();
+}
+
+function generateBox(doc){
+  doc
+  .strokeColor("#aaaaaa")
+  .lineWidth(3)
+  .rect(393, 100, 160, 82)
+  .stroke();
+}
+
+function formatCurrency(cents) {
+  return "$" + (cents / 100).toFixed(2);
+}
+
+function formatDate(date) {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return year + "/" + month + "/" + day;
+}
 module.exports = {
   createInvoice
 };
