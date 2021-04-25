@@ -23,7 +23,7 @@ function generateHeader(doc) {
     .fontSize(10)
     .text("Mini Miracles", 200, 50, { align: "right" })
     .text("123 Main Street", 200, 65, { align: "right" })
-    .text("New York, NY, 10025", 200, 80, { align: "right" })
+    .text("Anoka, MN, 55303", 200, 80, { align: "right" })
     .moveDown();
 }
 
@@ -190,7 +190,7 @@ function formatDate(date) {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  return year + "/" + month + "/" + day;
+  return month + "/" + day + "/" + year;
 }
 module.exports = {
   createInvoice
