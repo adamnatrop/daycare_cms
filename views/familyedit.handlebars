@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="form-group show">
+        <div class="card">
+            <h1 class='card-header'>New/Edit Family Profile</h1>
+
+            <div class="row">
+                <div class="col-7" id='ul-container-3'>
+
+                    <h3>Parent Contact Info:</h3>
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <textarea class="form-control" aria-label="First Name">{{family.firstName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Last Name:</span>
+                        <textarea class="form-control" aria-label="Last Name">{{family.lastName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Phone Number:</span>
+                        <textarea class="form-control" aria-label="Phone Number:">{{family.lastName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Email Address:</span>
+                        <textarea class="form-control" aria-label="Email Address">{{family.email}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Street Address:</span>
+                        <textarea class="form-control" aria-label="Street Address">{{family.address}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">City:</span>
+                        <textarea class="form-control" aria-label="City">{{family.city}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">State:</span>
+                        <textarea class="form-control" aria-label="State">{{family.state}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Postal Code:</span>
+                        <textarea class="form-control" aria-label="Postal Code">{{family.postalCode}}</textarea>
+                    </div>
+
+                    <div class="col-4" id='ul-container-4'></div>
+                    <h3>Children Info:</h3>
+                    {{#each family.children as |child| }}
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <textarea class="form-control" aria-label="First Name">{{child.firstName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Last Name:</span>
+                        <textarea class="form-control" aria-label="Last Name">{{child.lastName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Birthdate:</span>
+                        <textarea class="form-control" aria-label="Birthdate">{{child.birthdate}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Age Group:</span>
+                        <textarea class="form-control" aria-label="Age Group">{{child.billing.type}}</textarea>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

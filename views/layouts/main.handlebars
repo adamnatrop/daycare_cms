@@ -21,13 +21,13 @@
     <nav>
         {{!-- <button class="writeInvoice">writeInvoice</button> --}}
         {{!-- <form target="_blank" action="/pdf/invoice.pdf">
-            <input class="writeInvoice" type="submit" value="Generate Invoice"/>
+            <input class="writeInvoice" type="submit" value="Generate Invoice" />
         </form> --}}
-        <a href="/api/internal/familyProfile/1">GENERATE PDF</a>
+        <a href="/api/internal/familyProfile/2">GENERATE PDF</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/api/internal">dashboard</a>
-        <a href="/api/internal/families">families</a>
+        <a href="/api/internal/families">New Family</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
@@ -39,8 +39,9 @@
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
-    
-    {{!-- <script src="/js/invoice-mapping.js"></script> --}}
+
+    {{!--
+    <script src="/js/invoice-mapping.js"></script> --}}
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

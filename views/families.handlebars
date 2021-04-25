@@ -1,25 +1,39 @@
-
-    <div class="form-group toast show" id='container-3'>
+<div class="container-fuid">
+    <div class="form-group show">
         <div class="card">
-            <h1 class='card-header'>Families</h1>
-            <div id='ul-container-3'>
-            <ul class='list-group' >
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Add
-                </li>
-                
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    View
-                </li>  
+            <h1 class='card-header'>Family Profile</h1>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Remove
-                </li>
-                
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-                    Update
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12" id='ul-container-3'>
+
+                    <h2>{{family.firstName}} {{family.lastName}}</h2>
+                    <p>
+                    <h3>Contact Info:</h3>
+                    Phone: {{family.phone}}<br>
+                    Email: <a href="mailto:{{family.email}}">{{family.email}}</a>
+                    </p>
+                    <p>
+                    <h3>Address:</h3>
+                    Address: {{family.address}}<br>
+                    City: {{family.city}}<br>
+                    State: {{family.state}} Postal Code: {{family.postalCode}}
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 col-md-5 col-sm-12" id='ul-container-3'>
+                    {{#each family.children as |child| }}
+                    <h4>Name: {{child.firstName}} {{child.lastName}}</h4>
+                    <p>Birthdate: {{format_date child.birthdate}}<br>
+                        Weekly Rate: ${{child.billing.cost}}
+                    </p>
+                    {{/each}}
+                    <button class="writeInvoice">writeInvoice</button>
+
+                    <a href="/api/internal/familyProfileEdit/{{family.id}}" class="edit">Edit
+                        Profile</a>
+                </div>
             </div>
         </div>
     </div>
+</div>

@@ -3,7 +3,7 @@
     "firstName": "Sam",
     "lastName": "jones",
     "allergies": "none",
-    "birthdate": 10201980,
+    "birthdate": "03/01/2017",
     "parent_id": 1,
     "billing_id": 1
   },
@@ -11,9 +11,24 @@
     "firstName": "Amy",
     "lastName": "knapp",
     "allergies": "soy",
-    "birthdate": 11021990,
+    "birthdate": "04/20/2018",
     "parent_id": 1,
     "billing_id": 2
+  },
+  {
+    "firstName": "Myra",
+    "lastName": "Bear",
+    "allergies": "none",
+    "birthdate": "05/01/2019",
+    "parent_id": 2,
+    "billing_id": 1
+  },
+  {
+    "firstName": "Bentley",
+    "lastName": "Doggo",
+    "allergies": "none",
+    "birthdate": "06/16/2020",
+    "parent_id": 2,
+    "billing_id": 2
   }
- 
 ]

@@ -3,9 +3,8 @@
 }
 
 .body {
+  background-attachment: fixed;
   background-image: url(./pic/backgroundimage.png);
-  height: auto;
-  max-height: inherit;
 }
 
 h1 {
@@ -16,6 +15,10 @@ h1 {
 h2 {
   font-family: cursive;
   text-align: center;
+}
+
+.familyProfile {
+  font-size: 1.5em;
 }
 
 #forgotpass {
@@ -43,6 +46,8 @@ h2 {
 
 #ul-container-3 {
   text-align: center;
-  /* border: solid 1px black; */
+  border: solid 1px black;
+  border-radius: 30px;
   padding: 1rem;
+  margin: 2%;
 }
