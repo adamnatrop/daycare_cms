@@ -192,7 +192,6 @@ function formatDate(date) {
 
   return year + "/" + month + "/" + day;
 }
-
 module.exports = {
   createInvoice
 };

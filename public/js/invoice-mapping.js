@@ -1,30 +1,47 @@
+//const createInvoice = require("./createInvoice.js");
 
-async function getData(event) {
-    event.preventDefault();
-    console.log('FIRED');
-    let url = '/api/internal/1';
-    try {
-      let res = await fetch(url);
-      response = res.json()
-    //   mapInvoice(response);
-      return await console.log(response);
-    } catch (error) {
-      console.log(error);
-    };
-  };
+
+// async function getData(event) {
+//   fetch('/api/internal/1')
+//   .then((response) => {
+//   return response.json();
+//   }).then((res) => {
+  
+//   mapInvoice(res);
+//   })
+  
+// };
+
+// async function submitInvoice(invoice) {
+//  try {
+//   const response = await fetch('/api/internal/invoice', {
+//     method: 'POST',
+//     body: JSON.stringify(invoice),
+//     headers: {'Content-Type': 'application/json'},
+//   });
+//  } catch (err) {
+//    console.log(err);
+//  }
+ 
+// };
+
 
 
 
 async function mapInvoice (data){
+  
     const childArray =[];
-    Object.entries(data).forEach(entry => {
+    
+    data.children.forEach(function(item, index) {
+     
       let childData = {
-        child: item.firstName + " " + item.firstName,
+        child: `${item.firstName} ${item.lastName}`,
         age_group: item.billing.type,
-        birth_day: item.birthDate,
+        birth_day: item.birthdate,
         amount: item.billing.cost
       }
       childArray.push(childData)
+      
     });
   
       let subtotal = 0
@@ -44,13 +61,24 @@ async function mapInvoice (data){
       child: childArray,
     
       subtotal: subtotal,
-      invoice_nr: invoice_nr++,
+      invoice_nr: +1,
       paid: 0,
     };
-  
-    createInvoice(invoice, "invoice.pdf");
+    
+    return invoice;
+    //submitInvoice(invoice);
+    // createInvoice(invoice, "invoice.pdf");
   };
 
-  document
-  .querySelector('.writeInvoice')
-  .addEventListener('click', getData);
+
+
+
+
+
+  // document
+  // .querySelector('.writeInvoice')
+  // .addEventListener('click', getData);
+
+  module.exports = {
+    mapInvoice
+  }
