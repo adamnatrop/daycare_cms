@@ -2,6 +2,21 @@
   margin-bottom: 0.8rem;
 }
 
+header {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: black;
+  font-size: 1.5em;
+}
+
 .body {
   background-attachment: fixed;
   background-image: url(/images/backgroundimagenokids.png);
@@ -13,6 +28,7 @@ h1 {
 
 h2 {
   font-family: cursive;
+  text-align: center;
 }
 
 .familyProfile {
@@ -42,5 +58,5 @@ h2 {
   border: solid 1px black;
   border-radius: 30px;
   padding: 1rem;
-  margin: 2%;
+  margin: 0% 2% 0% 2%;
 }

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="form-group show">
+        <div class="card">
+            <h1 class='card-header'>Child Profile</h1>
+
+            <div class="row">
+                <div class="col" id='ul-container-3'>
+                    <div class="col-4" id='ul-container-4'></div>
+                    <h3>Children Info:</h3>
+
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <textarea class="form-control" aria-label="First Name">{{child.firstName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Last Name:</span>
+                        <textarea class="form-control" aria-label="Last Name">{{child.lastName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Birthdate:</span>
+                        <textarea class="form-control" aria-label="Birthdate">{{format_date child.birthdate}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Age Group:</span>
+                        <textarea class="form-control" aria-label="Age Group">{{child.billing.type}}</textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
