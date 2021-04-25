@@ -81,6 +81,38 @@ router.get('/familyProfile/:id', withAuth, async (req, res) => {
     }
 });
 
+router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
+    try {
+        
+        const familyData = await Parent.findByPk( req.params.id, {
+            include: [
+                {
+                    model: Child,
+                    attributes: ['firstName', 'lastName', 'birthdate'],
+                    include: [
+                        {
+                            model: Billing,
+                            attributes: ['type', 'cost']
+                        }
+                    ]
+                }, 
+                
+            ],
+
+        });
+        // console.log(familyData);
+        const family = familyData.get({plain: true});
+        console.log(family);
+        res.render('familyedit', {
+           family,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // Get Family by ID
 router.get('/:id', async (req, res) => {
     try {
