@@ -25,7 +25,6 @@ const sess = {
 };
 
 app.use(session(sess));
-app.use(express.static('public/images')); 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
