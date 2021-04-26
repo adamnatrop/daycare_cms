@@ -13,13 +13,16 @@ header {
   justify-content: space-around;
 }
 
+#addChild {
+  background-color: white;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
 }
 
 nav a {
-  font-family: cursive;
   font-size: 1.5em;
 }
 
@@ -31,12 +34,10 @@ nav a {
 }
 
 h1 a {
-  font-family: cursive;
   color: black;
 }
 
 h2 {
-  font-family: cursive;
   text-align: center;
 }
 
@@ -68,6 +69,7 @@ h2 {
   border-radius: 30px;
   padding: 1rem;
   margin: 0% 2% 0% 2%;
+  background-color: white;
 }
 
 #addChild {
