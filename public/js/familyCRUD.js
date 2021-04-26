@@ -128,15 +128,23 @@ const newChild = async (event) => {
     let billing = document.querySelector('#familyChildEdit-billing').value.trim();
     console.log(billing)
 
-    
+    if (billing == "infant") {
+        billingId = 1;
+    } else if (billing == "toddler") {
+        billingId = 2;
+    } else {
+        billingId = 3;
+    }
+
 
     const childInfo = {
         firstName: document.querySelector('#familyChildEdit-first').value.trim(),
         lastName: document.querySelector('#familyChildEdit-last').value.trim(),
         birthdate: document.querySelector('#familyChildEdit-birth').value.trim(),
         parent_id: parentId,
-        billing_id: 1
+        billing_id: billingId
     };
+    console.log(childInfo.billing_id)
 
     if(childInfo) {
         const response = await fetch('/api/internal/addNewChild', {
@@ -152,6 +160,40 @@ const newChild = async (event) => {
     }
 };
 
+const deleteChild = async (event) => {
+    event.preventDefault();
+    let childIdData = document.querySelector('#childId');
+    let childId = childIdData.dataset.id;
+    let parentIdData = document.querySelector('#parentId');
+    let parentId = parentIdData.dataset.id;
+
+    const response = await fetch(`/api/internal/deleteChild/${childId}`, {
+        method: 'DELETE',
+        
+    });
+    if (response.ok) {
+        document.location.replace(`/api/internal/familyProfile/${parentId}`);
+    } else {
+        alert(response.statusText);
+    }
+}
+
+const deleteParent = async (event) => {
+    event.preventDefault();
+    
+    let parentIdData = document.querySelector('#parentId');
+    let parentId = parentIdData.dataset.id;
+
+    const response = await fetch(`/api/internal/deleteParent/${parentId}`, {
+        method: 'DELETE',
+        
+    });
+    if (response.ok) {
+        document.location.replace('/api/internal');
+    } else {
+        alert(response.statusText);
+    }
+}
 
 document
   .querySelector('#updateParent')
@@ -170,3 +212,10 @@ document
   .querySelector('#newParent')
   .addEventListener('click', newParent);
 
+ document
+  .querySelector('#deleteChild')
+  .addEventListener('click', deleteChild);
+
+  document
+  .querySelector('#deleteParent')
+  .addEventListener('click', deleteParent);
