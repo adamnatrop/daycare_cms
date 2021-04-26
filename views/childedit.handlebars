@@ -24,8 +24,11 @@
                             aria-label="Birthdate">{{format_date child.birthdate}}</textarea>
 
                         <span class="input-group-text">Age Group:</span>
-                        <textarea class="form-control" id="familyChildEdit-billing"
-                            aria-label="Age Group">{{child.billing.type}}</textarea>
+                        <select class="form-control" id="familyChildEdit-billing">
+                            <option>infant</option>
+                            <option>toddler</option>
+                            <option>preschooler</option>
+                        </select>
                     </div>
 
                 </div>
