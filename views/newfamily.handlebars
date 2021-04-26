@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="form-group show">
+        <div class="card">
+            <h1 class='card-header'>Parent Profile</h1>
+            <button class="btn btn-sm btn-primary" id="newParent" data-id="{{family.id}}">ADD</button>
+
+            <div class="row">
+                <div class="col" id='ul-container-3'>
+
+                    <h3>Parent Contact Info:</h3>
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <textarea class="form-control" id="familyEdit-first" aria-label="First Name"></textarea>
+
+                        <span class="input-group-text">Last Name:</span>
+                        <textarea class="form-control" id="familyEdit-last" aria-label="Last Name"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Phone Number:</span>
+                        <textarea class="form-control" id="familyEdit-phone" aria-label="Phone Number:"></textarea>
+
+                        <span class="input-group-text">Email Address:</span>
+                        <textarea class="form-control" id="familyEdit-email" aria-label="Email Address"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Street Address:</span>
+                        <textarea class="form-control" id="familyEdit-address" aria-label="Street Address"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">City:</span>
+                        <textarea class="form-control" id="familyEdit-city" aria-label="City"></textarea>
+
+                        <span class="input-group-text">State:</span>
+                        <textarea class="form-control" id="familyEdit-state" aria-label="State"></textarea>
+
+                        <span class="input-group-text">Postal Code:</span>
+                        <textarea class="form-control" id="familyEdit-postalCode" aria-label="Postal Code"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<span id="updateChild"></span>
+<span id="newChild"></span>
+<span id="updateParent"></span>
+<script src="/js/familyCRUD.js"></script>

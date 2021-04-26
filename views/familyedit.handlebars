@@ -1,7 +1,8 @@
 <div class="container">
     <div class="form-group show">
         <div class="card">
-            <h1 class='card-header'>New/Edit Family Profile</h1>
+            <h1 class='card-header'>Parent Profile</h1>
+            <button class="btn btn-sm btn-primary" id="updateParent" data-id="{{family.id}}">UPDATE</button>
 
             <div class="row">
                 <div class="col" id='ul-container-3'>
@@ -9,59 +10,48 @@
                     <h3>Parent Contact Info:</h3>
                     <div class="input-group">
                         <span class="input-group-text">First Name:</span>
-                        <textarea class="form-control" aria-label="First Name">{{family.firstName}}</textarea>
-                    </div>
-                    <div class="input-group">
+                        <textarea class="form-control" id="familyEdit-first"
+                            aria-label="First Name">{{family.firstName}}</textarea>
+
                         <span class="input-group-text">Last Name:</span>
-                        <textarea class="form-control" aria-label="Last Name">{{family.lastName}}</textarea>
+                        <textarea class="form-control" id="familyEdit-last"
+                            aria-label="Last Name">{{family.lastName}}</textarea>
                     </div>
                     <div class="input-group">
                         <span class="input-group-text">Phone Number:</span>
-                        <textarea class="form-control" aria-label="Phone Number:">{{family.phone}}</textarea>
-                    </div>
-                    <div class="input-group">
+                        <textarea class="form-control" id="familyEdit-phone"
+                            aria-label="Phone Number:">{{family.phone}}</textarea>
+
                         <span class="input-group-text">Email Address:</span>
-                        <textarea class="form-control" aria-label="Email Address">{{family.email}}</textarea>
+                        <textarea class="form-control" id="familyEdit-email"
+                            aria-label="Email Address">{{family.email}}</textarea>
                     </div>
                     <div class="input-group">
                         <span class="input-group-text">Street Address:</span>
-                        <textarea class="form-control" aria-label="Street Address">{{family.address}}</textarea>
+                        <textarea class="form-control" id="familyEdit-address"
+                            aria-label="Street Address">{{family.address}}</textarea>
                     </div>
                     <div class="input-group">
                         <span class="input-group-text">City:</span>
-                        <textarea class="form-control" aria-label="City">{{family.city}}</textarea>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text">State:</span>
-                        <textarea class="form-control" aria-label="State">{{family.state}}</textarea>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text">Postal Code:</span>
-                        <textarea class="form-control" aria-label="Postal Code">{{family.postalCode}}</textarea>
-                    </div>
+                        <textarea class="form-control" id="familyEdit-city" aria-label="City">{{family.city}}</textarea>
 
-                    <div class="col-4" id='ul-container-4'></div>
-                    <h3>Children Info:</h3>
-                    {{#each family.children as |child| }}
-                    <div class="input-group">
-                        <span class="input-group-text">First Name:</span>
-                        <textarea class="form-control" aria-label="First Name">{{child.firstName}}</textarea>
+                        <span class="input-group-text">State:</span>
+                        <textarea class="form-control" id="familyEdit-state"
+                            aria-label="State">{{family.state}}</textarea>
+
+                        <span class="input-group-text">Postal Code:</span>
+                        <textarea class="form-control" id="familyEdit-postalCode"
+                            aria-label="Postal Code">{{family.postalCode}}</textarea>
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-text">Last Name:</span>
-                        <textarea class="form-control" aria-label="Last Name">{{child.lastName}}</textarea>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text">Birthdate:</span>
-                        <textarea class="form-control" aria-label="Birthdate">{{format_date child.birthdate}}</textarea>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text">Age Group:</span>
-                        <textarea class="form-control" aria-label="Age Group">{{child.billing.type}}</textarea>
-                    </div>
-                    {{/each}}
                 </div>
             </div>
+            <button class="btn btn-sm btn-danger" id="deleteParent">DELETE</button>
         </div>
     </div>
 </div>
+<span id="parentId" data-id="{{family.id}}"></span>
+<span id="deleteChild"></span>
+<span id="updateChild"></span>
+<span id="newChild"></span>
+<span id="newParent"></span>
+<script src="/js/familyCRUD.js"></script>
