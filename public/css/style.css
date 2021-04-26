@@ -30,7 +30,8 @@ nav a {
   font-family: cursive;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-image: url(/images/backgroundimagenokids.png);
+  background-image: url(/images/backgroundimagenokids.png); 
+  /* Background image downloaded from wallpaperaccess.com  */
 }
 
 h1 a {
