@@ -18,7 +18,7 @@ function generateHeader(doc) {
     .image("public/images/generic_logo.jpeg", 50, 45, { width: 50 })
     .fillColor("#444444")
     .fontSize(20)
-    .text("Miracles", 110, 57)
+    .text("Mini Miracles", 110, 57)
   
     .fontSize(10)
     .text("Mini Miracles", 200, 50, { align: "right" })
@@ -75,7 +75,7 @@ function generateCustomerInformation(doc, invoice) {
 
 function generateInvoiceTable(doc, invoice) {
   let i;
-  const invoiceTableTop = 285;
+  const invoiceTableTop = 275;
 
   doc.font("Helvetica-Bold");
   generateTableRow(
@@ -159,14 +159,14 @@ function generateTableRow(
   doc
     .fontSize(10)
     .text(child, 50, y)
-    .text(age_group, 150, y)
-    .text(birth_day, 370, y, { width: 90})
+    .text(age_group, 170, y)
+    .text(birth_day, 350, y, { width: 90})
     .text(lineTotal, 0, y, { align: "right" });
 }
 
 function generateHr(doc, y) {
   doc
-    .strokeColor("#aaaaaa")
+    .strokeColor("#32a87b")
     .lineWidth(1)
     .moveTo(50, y)
     .lineTo(550, y)
@@ -175,7 +175,7 @@ function generateHr(doc, y) {
 
 function generateBox(doc){
   doc
-  .strokeColor("#aaaaaa")
+  .strokeColor("#32a87b")
   .lineWidth(3)
   .rect(393, 100, 160, 82)
   .stroke();

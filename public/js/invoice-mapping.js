@@ -6,7 +6,7 @@ async function mapInvoice (data){
     data.children.forEach(function(item, index) {
 
       let childData = {
-        child: `${item.firstName} ${item.lastName}`,
+        child: `${item.firstName} ${item.lastName}`.toUpperCase(),
         age_group: item.billing.type.toUpperCase(),
         birth_day: moment(item.birthdate).format('DD/MM/YYYY'),
         amount: item.billing.cost * 100
@@ -18,7 +18,7 @@ async function mapInvoice (data){
 
     const invoice = {
       parent: {
-        name: data.firstName + " " + data.lastName,
+        name: data.firstName.toUpperCase() + " " + data.lastName.toUpperCase(),
         address: data.address.toUpperCase(),
         city: data.city.toUpperCase(),
         state: data.state.toUpperCase(),
