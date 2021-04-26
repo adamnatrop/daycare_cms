@@ -1,7 +1,7 @@
 <div class="container-fuid">
     <div class="form-group show">
         <div class="card">
-            <h1 class='card-header'>Family Profile</h1>
+            <h2 class='card-header'>Family Profile</h2>
 
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12" id='ul-container-3'>
@@ -18,20 +18,27 @@
                     City: {{family.city}}<br>
                     State: {{family.state}} Postal Code: {{family.postalCode}}
                     </p>
-
+                    <h4><a href="/api/internal/familyProfileEdit/{{family.id}}" class="edit">Edit Parent</a>
+                    </h4>
                 </div>
 
-                <div class="col-lg-4 col-md-5 col-sm-12" id='ul-container-3'>
-                    {{#each family.children as |child| }}
-                    <h4>Name: {{child.firstName}} {{child.lastName}}</h4>
-                    <p>Birthdate: {{format_date child.birthdate}}<br>
-                        Weekly Rate: ${{child.billing.cost}}
-                    </p>
-                    {{/each}}
-                    <a href="/api/internal/familyProfile/2">GENERATE INVOICE</a>
-
-                    <a href="/api/internal/familyProfileEdit/{{family.id}}" class="edit">Edit
-                        Profile</a>
+                <div class="col-lg-4 col-md-5 col-sm-12">
+                    <div class="container" id='ul-container-3'>
+                        {{#each family.children as |child| }} <h4>Name: {{child.firstName}}
+                            {{child.lastName}}</h4>
+                        <p>Birthdate: {{format_date child.birthdate}}<br>
+                            Weekly Rate: ${{child.billing.cost}}
+                        </p>
+                        <h4><a href="/api/internal/childProfileEdit/{{child.id}}" class="edit">Edit Child</a>
+                        </h4>
+                        {{/each}}
+                        <button class="btn btn-sm btn-primary" id="addChild" data-id="{{something.id}}">Add New
+                            Child</button>
+                    </div>
+                    <div class="container" id='ul-container-3'>
+                        <h4><a href="/pdf/invoice.pdf" target="_blank">GENERATE INVOICE</a>
+                        </h4>
+                    </div>
                 </div>
             </div>
         </div>

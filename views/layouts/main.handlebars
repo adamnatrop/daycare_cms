@@ -14,7 +14,7 @@
 <body class="body">
     <header class="container-fluid">
         <div class="row">
-            <h1>Daycare CMS</h1>
+            <h1><a href="/api/internal">DayCare CRM</a></h1>
         </div>
 
     </header>
@@ -26,11 +26,12 @@
         {{!-- <a href="/api/internal/familyProfile/2">GENERATE PDF</a> --}}
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/api/internal">dashboard</a>
+        <a href="/api/internal">Dashboard</a>
         <a href="/api/internal/families">New Family</a>
-        <button class="no-button" id="logout">logout</button>
+        <a href="/" id="logout">LogOut</a>
+        {{!-- <button class="no-button" id="logout">logout</button> --}}
         {{else}}
-        <a href="/login">login</a>
+        {{!-- <a href="/login" id="getstarted">Get Started</a> --}}
         {{/if}}
     </nav>
     <main>

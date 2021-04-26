@@ -67,7 +67,7 @@ router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
             include: [
                 {
                     model: Child,
-                    attributes: ['firstName', 'lastName', 'birthdate'],
+                    attributes: ['id','firstName', 'lastName', 'birthdate'],
                     include: [
                         {
                             model: Billing,
@@ -91,6 +91,29 @@ router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
     }
 });
 
+router.get('/childProfileEdit/:id', withAuth, async (req, res) => {
+    try {
+        
+        const childData = await Child.findByPk( req.params.id, {
+            include: [
+                {
+                    model: Billing,
+                    attributes: ['type', 'cost']
+                        }
+                    ]     
+
+        });
+        // console.log(familyData);
+        const child = childData.get({plain: true});
+        console.log(child);
+        res.render('childedit', {
+           child,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // GET Parent by ID to render Family Profile AND generate Invoice PDF
 router.get('/familyProfile/:id',  async (req, res) => {
@@ -99,7 +122,7 @@ router.get('/familyProfile/:id',  async (req, res) => {
             include: [
                 {
                     model: Child,
-                    attributes: ['firstName', 'lastName', 'birthdate'],
+                    attributes: ['id', 'firstName', 'lastName', 'birthdate'],
                     include: [
                         {
                             model: Billing,

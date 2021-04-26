@@ -1,84 +1,40 @@
-//const createInvoice = require("./createInvoice.js");
-
-
-// async function getData(event) {
-//   fetch('/api/internal/1')
-//   .then((response) => {
-//   return response.json();
-//   }).then((res) => {
-  
-//   mapInvoice(res);
-//   })
-  
-// };
-
-// async function submitInvoice(invoice) {
-//  try {
-//   const response = await fetch('/api/internal/invoice', {
-//     method: 'POST',
-//     body: JSON.stringify(invoice),
-//     headers: {'Content-Type': 'application/json'},
-//   });
-//  } catch (err) {
-//    console.log(err);
-//  }
- 
-// };
-
-
-
+const moment = require("moment");
 
 async function mapInvoice (data){
-  
     const childArray =[];
-    
+    let sub = 0;
     data.children.forEach(function(item, index) {
-     
+
       let childData = {
-        child: `${item.firstName} ${item.lastName}`,
-        age_group: item.billing.type,
-        birth_day: item.birthdate,
-        amount: item.billing.cost
+        child: `${item.firstName} ${item.lastName}`.toUpperCase(),
+        age_group: item.billing.type.toUpperCase(),
+        birth_day: moment(item.birthdate).format('DD/MM/YYYY'),
+        amount: item.billing.cost * 100
       }
       childArray.push(childData)
-      
+      sub = sub + item.billing.cost * 100
+      console.log(sub)
     });
-  
-      let subtotal = 0
-  
-    for (let i = 0; i >= childArray.length ; i++){
-      subtotal = subtotal + childArray.amount
-    };
-  
+
     const invoice = {
       parent: {
-        name: data.firstName + " " + data.lastName,
-        address: data.address,
-        city: data.city,
-        state: data.state,
+        name: data.firstName.toUpperCase() + " " + data.lastName.toUpperCase(),
+        address: data.address.toUpperCase(),
+        city: data.city.toUpperCase(),
+        state: data.state.toUpperCase(),
         postal_code: data.postalCode
       },
       child: childArray,
-    
-      subtotal: subtotal,
-      invoice_nr: +1,
+      subtotal: sub,
+      invoice_nr: data.lastName.substr(0, 3) + data.id + 1,
       paid: 0,
     };
-    
+    console.log(invoice)
     return invoice;
-    //submitInvoice(invoice);
-    // createInvoice(invoice, "invoice.pdf");
   };
-
-
-
-
-
-
-  // document
-  // .querySelector('.writeInvoice')
-  // .addEventListener('click', getData);
 
   module.exports = {
     mapInvoice
   }
+
+  

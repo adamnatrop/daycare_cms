@@ -2,17 +2,42 @@
   margin-bottom: 0.8rem;
 }
 
+.homepage {
+  margin-top: 20%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  font-family: cursive;
+  font-size: 1.5em;
+}
+
 .body {
+  font-family: cursive;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   background-image: url(/images/backgroundimagenokids.png);
 }
 
-h1 {
+h1 a {
   font-family: cursive;
+  color: black;
 }
 
 h2 {
   font-family: cursive;
+  text-align: center;
 }
 
 .familyProfile {
@@ -42,5 +67,5 @@ h2 {
   border: solid 1px black;
   border-radius: 30px;
   padding: 1rem;
-  margin: 2%;
+  margin: 0% 2% 0% 2%;
 }

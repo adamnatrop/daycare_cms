@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="form-group show">
+        <div class="card">
+            <h1 class='card-header'>Child Profile</h1>
+            <button class="btn btn-sm btn-primary" id="updateChild" data-id="{{child.id}}">UPDATE</button>
+
+            <div class="row">
+                <div class="col" id='ul-container-3'>
+                    <div class="col-4" id='ul-container-4'></div>
+                    <h3>Child Info:</h3>
+
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <textarea class="form-control" id="familyChildEdit-first"
+                            aria-label="First Name">{{child.firstName}}</textarea>
+
+                        <span class="input-group-text">Last Name:</span>
+                        <textarea class="form-control" id="familyChildEdit-last"
+                            aria-label="Last Name">{{child.lastName}}</textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Birthdate:</span>
+                        <textarea class="form-control" id="familyChildEdit-birth"
+                            aria-label="Birthdate">{{format_date child.birthdate}}</textarea>
+
+                        <span class="input-group-text">Age Group:</span>
+                        <textarea class="form-control" id="familyChildEdit-billing"
+                            aria-label="Age Group">{{child.billing.type}}</textarea>
+                    </div>
+
+                </div>
+            </div>
+            <button class="btn btn-sm btn-danger" id="childId" data-id="{{child.id}}"><a
+                    href="deleteChild/{{child.id}}">DELETE</a></button>
+        </div>
+    </div>
+</div>
