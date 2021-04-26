@@ -12,7 +12,7 @@ Application allows a user to create an account and manage thier day care family 
 * [Usage](#Usage)
 * [License](#License)
 * [Contributing](#Contributing)
-* [Heroku Link](#Heroku Link)
+* [Heroku](#Heroku)
 * [Pictures](#Pictures)
 
 ## Installation
@@ -28,7 +28,7 @@ Please review [https://opensource.org/licenses/MIT](https://opensource.org/licen
 ## Contributing
 This application was a collaboration of adamnatrop -Adam Natrop, jmalm79 -Joshua Alm, StevenVC-P -Steven Van Court, bossdaibang123 -Tam Pham
 
-## Heroku Link
+## Heroku
 [Deployed Site](https://quiet-bayou-23568.herokuapp.com/)
 
 ## Pictures
