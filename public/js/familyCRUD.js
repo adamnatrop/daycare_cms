@@ -65,12 +65,23 @@ const updateChild = async (event) => {
     let childId = childIdData.dataset.id;
     let parentIdData = document.querySelector('#parentId');
     let parentId = parentIdData.dataset.id;
+    let billing = document.querySelector('#familyChildEdit-billing').value.trim();
+    console.log(billing)
+
+    if (billing == "infant") {
+        billingId = 1;
+    } else if (billing == "toddler") {
+        billingId = 2;
+    } else {
+        billingId = 3;
+    }
+
     
     const childInfo = {
         firstName: document.querySelector('#familyChildEdit-first').value.trim(),
         lastName: document.querySelector('#familyChildEdit-last').value.trim(),
         birthdate: document.querySelector('#familyChildEdit-birth').value.trim(),
-        billing: document.querySelector('#familyChildEdit-billing').value.trim(),
+        billing: billingId
     };
 
     if(childInfo) {
