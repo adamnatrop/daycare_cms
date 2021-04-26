@@ -6,10 +6,10 @@
 // LOGIC FLOW FOR NEW FAMILIES NEEDS TO BE ADD NEW PARENT FIRST THEN ADD NEW CHILD PASS PARENT ID 
 // SO THAT WE CAN ASSIGN THE CHILD TO THE PARENT
 
-const parentIdData = document.querySelector('#parentId');
-const parentId = parentIdData.dataset.id,
-const childIdData = document.querySelector('#childId');
-const childId = childIdData.dataset.id,
+// const parentIdData = document.querySelector('#parentId');
+// const parentId = parentIdData.dataset.id,
+// const childIdData = document.querySelector('#childId');
+// const childId = childIdData.dataset.id,
 
 // const parentFirst = document.querySelector('#familyEdit-first').value.trim();
 // const parentLast = document.querySelector('#familyEdit-last').value.trim();
@@ -28,10 +28,11 @@ const childId = childIdData.dataset.id,
 
 const updateParent = async (event) => {
     event.preventDefault();
+    console.log('FIRED UPDATE PARENT EVENT')
     let parentIdData = document.querySelector('#parentId');
-    let parentId = parentIdData.dataset.id,
+    let parentId = parentIdData.dataset.id;
 
-    const parentInfo = {
+    let parentInfo = {
         
         firstName: document.querySelector('#familyEdit-first').value.trim(),
         lastName: document.querySelector('#familyEdit-last').value.trim(),
@@ -42,11 +43,11 @@ const updateParent = async (event) => {
         state: document.querySelector('#familyEdit-state').value.trim(),
         postalCode: document.querySelector('#familyEdit-postalCode').value.trim(),
     };
-
+    
     if (parentInfo) {
         const response = await fetch(`/api/internal/updateParent/${parentId}`, {
             method: 'PUT',
-            body: JSON.stringify({parentInfo}),
+            body: JSON.stringify(parentInfo),
             headers: {'Content-Type': 'application/json'},
         });
         if (response.ok) {
@@ -59,12 +60,15 @@ const updateParent = async (event) => {
 
 const updateChild = async (event) => {
     event.preventDefault();
+    console.log('UPDATE CHILD EVENT FIRED')
     let childIdData = document.querySelector('#childId');
-    let childId = childIdData.dataset.id,
+    let childId = childIdData.dataset.id;
+    let parentIdData = document.querySelector('#parentId');
+    let parentId = parentIdData.dataset.id;
     
     const childInfo = {
         firstName: document.querySelector('#familyChildEdit-first').value.trim(),
-        lastName: document.querySelector('#familyChildEdid-last').value.trim(),
+        lastName: document.querySelector('#familyChildEdit-last').value.trim(),
         birthdate: document.querySelector('#familyChildEdit-birth').value.trim(),
         billing: document.querySelector('#familyChildEdit-billing').value.trim(),
     };
@@ -72,11 +76,11 @@ const updateChild = async (event) => {
     if(childInfo) {
         const response = await fetch(`/api/internal/updateChild/${childId}`, {
             method: 'PUT',
-            body: JSON.stringify({childInfo}),
+            body: JSON.stringify(childInfo),
             headers: {'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            document.location.replace('/api/internal');
+            document.location.replace(`/api/internal/familyProfile/${parentId}`);
         } else {
             alert(response.statusText);
         }
@@ -102,20 +106,11 @@ const newParent = async (event) => {
     if (parentInfo) {
         const response = await fetch('/api/internal/newParent/', {
             method: 'POST',
-            body: JSON.stringify({parentInfo}),
+            body: JSON.stringify(parentInfo),
             headers: {'Content-Type': 'application/json'},
         });
         if (response.ok) {
-           // document.location.replace('/api/internal/addChild');
-            const res = await fetch('/api/internal/addChild', {
-                method: 'GET',
-
-            });
-            if (response.ok){
-                console.log("SUCCESS")
-            } else {
-                alert(response.statusText);
-            };
+           document.location.replace('/api/internal/addchild/getParent');
 
         } else {
             alert(response.statusText);
@@ -123,35 +118,30 @@ const newParent = async (event) => {
     }    
 };
 
-// async function getData(event) {
-//   fetch('/api/internal/1')
-//   .then((response) => {
-//   return response.json();
-//   }).then((res) => {
-  
-//   mapInvoice(res);
-//   })
-  
-// };
 
 
 const newChild = async (event) => {
     event.preventDefault();
+    console.log('NEW CHILD EVENT FIRED');
     let parentIdData = document.querySelector('#parentId');
-    let parentId = parentIdData.dataset.id,
+    let parentId = parentIdData.dataset.id;
+    let billing = document.querySelector('#familyChildEdit-billing').value.trim();
+    console.log(billing)
+
+    
 
     const childInfo = {
         firstName: document.querySelector('#familyChildEdit-first').value.trim(),
-        lastName: document.querySelector('#familyChildEdid-last').value.trim(),
+        lastName: document.querySelector('#familyChildEdit-last').value.trim(),
         birthdate: document.querySelector('#familyChildEdit-birth').value.trim(),
         parent_id: parentId,
-        billing_id: document.querySelector('#familyChildEdit-billing').value.trim(),
+        billing_id: 1
     };
 
     if(childInfo) {
-        const response = await fetch('/api/internal/newChild/', {
+        const response = await fetch('/api/internal/addNewChild', {
             method: 'POST',
-            body: JSON.stringify({childInfo}),
+            body: JSON.stringify(childInfo),
             headers: {'Content-Type': 'application/json'},
         });
         if (response.ok) {

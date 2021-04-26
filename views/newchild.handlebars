@@ -2,7 +2,7 @@
     <div class="form-group show">
         <div class="card">
             <h1 class='card-header'>Child Profile</h1>
-            <button class="btn btn-sm btn-primary" id="updateChild" data-id="{{child.id}}">UPDATE</button>
+            <button class="btn btn-sm btn-primary" id="newChild" >UPDATE</button>
 
             <div class="row">
                 <div class="col" id='ul-container-3'>
@@ -35,3 +35,11 @@
     </div>
 </div>
 </div>
+<p>{{parent.id}}</p>
+
+<span id="parentId" data-id="{{parent.id}}"></span>
+
+<span id="updateParent"></span>
+<span id="updateChild"></span>
+<span id="newParent"></span>
+<script src="/js/familyCRUD.js"></script>
