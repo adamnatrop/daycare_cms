@@ -33,13 +33,14 @@
 
                 </div>
             </div>
-            <button class="btn btn-sm btn-danger" id="childId" data-id="{{child.id}}"><a
-                    href="/api/internal/deleteChild/{{child.id}}">DELETE</a></button>
+            <button class="btn btn-sm btn-danger" id="deleteChild" data-id="{{child.id}}">DELETE</button>
         </div>
     </div>
 </div>
 <span id="parentId" data-id="{{child.parent_id}}"></span>
+<span id="childId" data-id="{{child.id}}"></span>
 <span id="updateParent"></span>
 <span id="newChild"></span>
 <span id="newParent"></span>
+<span id="deleteParent"></span>
 <script src="/js/familyCRUD.js"></script>
