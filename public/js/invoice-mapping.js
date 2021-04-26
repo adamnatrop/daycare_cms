@@ -1,5 +1,5 @@
 const moment = require("moment");
-
+// THIS MAPS THE DATABASE DATA INTO A VAR FOR THE INVOICE PDF GENERATION
 async function mapInvoice (data){
     const childArray =[];
     let sub = 0;

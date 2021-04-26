@@ -1,31 +1,5 @@
 
-// NEED TO GET PARENT ID AS A DATA VALUE ON UPDATE PAGES AND WHEN ADDING A NEW CHILD ON FAMILY PROFILE
-
-// NEED TO GET PARENT ID AS DATA VALUE ON ADD NEW PARENT ADD NEW CHILD
-
-// LOGIC FLOW FOR NEW FAMILIES NEEDS TO BE ADD NEW PARENT FIRST THEN ADD NEW CHILD PASS PARENT ID 
-// SO THAT WE CAN ASSIGN THE CHILD TO THE PARENT
-
-// const parentIdData = document.querySelector('#parentId');
-// const parentId = parentIdData.dataset.id,
-// const childIdData = document.querySelector('#childId');
-// const childId = childIdData.dataset.id,
-
-// const parentFirst = document.querySelector('#familyEdit-first').value.trim();
-// const parentLast = document.querySelector('#familyEdit-last').value.trim();
-// const phone = document.querySelector('#familyEdit-phone').value.trim();
-// const email = document.querySelector('#familyEdit-email').value.trim();
-// const address = document.querySelector('#familyEdit-address').value.trim();
-// const city = document.querySelector('#familyEdit-city').value.trim();
-// const state = document.querySelector('#familyEdit-state').value.trim();
-// const postalCode = document.querySelector('#familyEdit-postalCode').value.trim();
-
-// const childFirst = document.querySelector('#familyChildEdit-first').value.trim();
-// const childLast = document.querySelector('#familyChildEdid-last').value.trim();
-// const birthdate = document.querySelector('#familyChildEdit-birth').value.trim();
-// const billing = document.querySelector('#familyChildEdit-billing').value.trim();
-
-
+// UPDATE PARENT 
 const updateParent = async (event) => {
     event.preventDefault();
     console.log('FIRED UPDATE PARENT EVENT')
@@ -57,7 +31,7 @@ const updateParent = async (event) => {
         }
     }    
 };
-
+// UPDATE CHILD
 const updateChild = async (event) => {
     event.preventDefault();
     console.log('UPDATE CHILD EVENT FIRED')
@@ -67,7 +41,7 @@ const updateChild = async (event) => {
     let parentId = parentIdData.dataset.id;
     let billing = document.querySelector('#familyChildEdit-billing').value.trim();
     console.log(billing)
-
+    // checks billing string against id to reference table
     if (billing == "infant") {
         billingId = 1;
     } else if (billing == "toddler") {
@@ -76,7 +50,7 @@ const updateChild = async (event) => {
         billingId = 3;
     }
 
-    
+    // gathers data from DOM
     const childInfo = {
         firstName: document.querySelector('#familyChildEdit-first').value.trim(),
         lastName: document.querySelector('#familyChildEdit-last').value.trim(),
@@ -98,7 +72,7 @@ const updateChild = async (event) => {
     }
 };
 
-
+// CREATE NEW PARENT
 const newParent = async (event) => {
     event.preventDefault();
    
@@ -130,7 +104,7 @@ const newParent = async (event) => {
 };
 
 
-
+// ADD NEW CHILD
 const newChild = async (event) => {
     event.preventDefault();
     console.log('NEW CHILD EVENT FIRED');

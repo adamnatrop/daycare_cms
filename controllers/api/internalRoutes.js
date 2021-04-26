@@ -4,6 +4,7 @@ const { Parent, Child, ParentChild, Billing, User} = require('../../models');
 const pdfInvoice = require('../../createInvoice'); 
 const invoiceMap = require('../../public/js/invoice-mapping');
 
+// Generate invoice path
 router.post('/invoice', async (req, res) => {
     try {
         const invoice = req.body
@@ -48,7 +49,7 @@ router.get('/', withAuth,  async (req, res) => {
     }
 });
 
-
+// Render Family Page
 router.get('/families', withAuth, async (req, res) => {
     try {
         res.render('families', {
@@ -60,6 +61,7 @@ router.get('/families', withAuth, async (req, res) => {
     }
 });
 
+// Render New Family page to add parent
 router.get('/newfamily', withAuth, async (req, res) => {
     try {
         res.render('newfamily', {
@@ -70,6 +72,7 @@ router.get('/newfamily', withAuth, async (req, res) => {
     }
 });
 
+// path to Edit Family by Parent ID
 router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
     try {
         
@@ -101,6 +104,7 @@ router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
     }
 });
 
+// Path to Edit Child Profile Render Child Edit page
 router.get('/childProfileEdit/:id', withAuth, async (req, res) => {
     try {
         
@@ -175,22 +179,16 @@ router.get('/:id', async (req, res) => {
                 
             ],
         });
-        //REMOVE AFTER HANDLEBAR PAGE IS CREATED
-        //console.log(familyData);
-        
+      
         const family = familyData.get({plain: true});
-        //console.log(family);
         res.status(200).json(family)
-        // res.render('families', {
-        //     ...family,
-        //     logged_in: req.session.logged_in
-        // });
+      
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-
+// Create New Child attached to Parent ID
 router.get('/addchild/getParent', async (req, res) => {
     console.log('HIT')
     try {
