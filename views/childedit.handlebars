@@ -31,7 +31,12 @@
                 </div>
             </div>
             <button class="btn btn-sm btn-danger" id="childId" data-id="{{child.id}}"><a
-                    href="deleteChild/{{child.id}}">DELETE</a></button>
+                    href="/api/internal/deleteChild/{{child.id}}">DELETE</a></button>
         </div>
     </div>
 </div>
+<span id="parentId" data-id="{{child.parent_id}}"></span>
+<span id="updateParent"></span>
+<span id="newChild"></span>
+<span id="newParent"></span>
+<script src="/js/familyCRUD.js"></script>

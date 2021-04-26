@@ -60,6 +60,16 @@ router.get('/families', withAuth, async (req, res) => {
     }
 });
 
+router.get('/newfamily', withAuth, async (req, res) => {
+    try {
+        res.render('newfamily', {
+            logged_in: req.session.logged_in
+        });
+    } catch (err){
+        res.status(500).json(err);
+    }
+});
+
 router.get('/familyProfileEdit/:id', withAuth, async (req, res) => {
     try {
         
@@ -181,8 +191,33 @@ router.get('/:id', async (req, res) => {
 });
 
 
+router.get('/addchild/getParent', async (req, res) => {
+    console.log('HIT')
+    try {
+        
+        const parentData = await Parent.findAll({
+           order: [['id', 'DESC']],
+           attributes: ['id', 'firstName', 'lastName'],
+            limit: 1,
+        });
+        
+        const parentArr = parentData.map((par) => par.get({plain: true}));
+        const parent = parentArr[0];
+        console.log(parent);
+        
+        res.render('newchild', {
+            parent,
+            logged_in: req.session.logged_in
+        });
+        //res.status(200).json(parent);
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // Add Child
-router.post('/child', withAuth,  async (req, res) => {
+router.post('/addNewChild', withAuth,  async (req, res) => {
     console.log(req.body);
     try {
         const newChild = await Child.create(req.body);
@@ -194,7 +229,7 @@ router.post('/child', withAuth,  async (req, res) => {
 });
 
 // Update Child
-router.put('/child/:id', withAuth, async (req, res) => {
+router.put('/updatechild/:id', withAuth, async (req, res) => {
     try {
         const childData = await Child.update( req.body, {
             where: {
@@ -208,7 +243,8 @@ router.put('/child/:id', withAuth, async (req, res) => {
 });
 
 // Delete Child
-router.delete('/child/:id', withAuth, async (req, res) => {
+router.delete('/deleteChild/:id', withAuth, async (req, res) => {
+    console.log("HIT HERE")
     try {
         const childData = await Child.destroy({
             where: {
@@ -220,7 +256,10 @@ router.delete('/child/:id', withAuth, async (req, res) => {
             res.status(400).json({ message: 'No Child found with this id'});
             return;
         }
-
+        res.render('families', {
+            parent,
+            logged_in: req.session.logged_in
+        });
         res.status(200).json(childData);
     } catch (err) {
         res.status(500).json(err);
@@ -229,12 +268,13 @@ router.delete('/child/:id', withAuth, async (req, res) => {
 
 
 //Add Parent
-router.post('/parent', withAuth, async (req, res) => {
+router.post('/newParent', withAuth, async (req, res) => {
+    console.log(req.body);
     try {
-        const newParent = await Parent.create({
+        const newParent = await Parent.create(
             // match to form input fields
-            ...req.body,
-        });
+        req.body
+        );
         res.status(200).json(newParent);
     } catch (err) {
         res.status(400).json(err);
@@ -243,7 +283,7 @@ router.post('/parent', withAuth, async (req, res) => {
 
 
 // Update Parent
-router.put('/parent/:id', withAuth, async (req, res) => {
+router.put('/updateParent/:id', withAuth, async (req, res) => {
     try {
         const parentData = await Parent.update( req.body, {
             where: {
@@ -257,7 +297,7 @@ router.put('/parent/:id', withAuth, async (req, res) => {
 });
 
 // Delete Parent
-router.delete('/parent/:id', withAuth, async (req, res) => {
+router.delete('/deleteParent/:id', withAuth, async (req, res) => {
     try {
         const parentData = await Parent.destroy({
             where: {
